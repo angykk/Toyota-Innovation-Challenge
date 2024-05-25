@@ -31,13 +31,12 @@ rclpy.spin_once(robot, timeout_sec=0.1)
 #run control functions on loop
 try:
     print("Entering the robot loop which cycles until the script is stopped")
-    while True:
-
+    #while True:
+        print("A")
         #rclpy,spin_once is a function that updates the ros topics once
         rclpy.spin_once(robot, timeout_sec=0.1)
 
         robot.checkImage()
-        print("A")
         print(robot.checkImage())
         print(rosImg_to_cv2())
         checkForStopSigns(rosImg_to_cv2())
