@@ -45,11 +45,11 @@ try:
         # print(image)
         # # model = YOLO('yolov8n.pt')
         
-        if robot.ML_predict_stop_sign(model,np.asarray(image)):
-            print("stop sign")
-            robot.set_cmd_vel(0,0,1)
-        else:
-            print("no stop sign")
+        # if robot.ML_predict_stop_sign(model,np.asarray(image)):
+        #     print("stop sign")
+        #     robot.set_cmd_vel(0,0,1)
+        # else:
+        #     print("no stop sign")
   
 
         if((robot.detect_obstacle(robot.checkScan().ranges)[0]) < 0.09):
