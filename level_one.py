@@ -34,7 +34,6 @@ rclpy.spin_once(robot, timeout_sec=0.1)
 try:
     print("Entering the robot loop which cycles until the script is stopped")
     while True:
-        print("A")
         #rclpy,spin_once is a function that updates the ros topics once
         rclpy.spin_once(robot, timeout_sec=0.1)
 
