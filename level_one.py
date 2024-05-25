@@ -49,9 +49,10 @@ try:
         #     robot.set_cmd_vel(0,0,1)
         # else:
         #     print("no stop sign")
-  
 
-        if((robot.detect_obstacle(robot.checkScan().ranges)[0]) < 0.09):
+        dist , _ = robot.detect_obstacle(robot.checkScan().ranges)
+
+        if(dist < 0.09):
             print("back")
             robot.set_cmd_vel(-0.25,0,1)
             print("wait")
