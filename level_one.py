@@ -45,21 +45,21 @@ try:
         model = YOLO('yolov8n.pt')
         
         if robot.ML_predict_stop_sign(model,image):
-            print("stop sign")
+            print("stop sign detected")
             robot.set_cmd_vel(0,0,1)
         else:
             print("no stop sign")
 
         dist , _ = robot.detect_obstacle(robot.checkScan().ranges)
 
-        # if(dist < 0.4):
-        robot.set_cmd_vel(0.0,0.5,3)
-            # print("back")
-            # robot.set_cmd_vel(-0.25,0,1)
-            # print("wait")
-            # robot.set_cmd_vel(0,0,5)
-            # print("turn")
-            # robot.set_cmd_vel(0,0.25*3.14159265359, 4)
+        if(dist < 0.4):
+            #robot.set_cmd_vel(0.0,0.5,3)
+            print("back")
+            robot.set_cmd_vel(-0.25,0,1)
+            print("wait")
+            robot.set_cmd_vel(0,0,5)
+            print("turn")
+            robot.set_cmd_vel(0,0.25*3.14159265359, 4)
         #end of anti-collision
 
         #Add looping functionality here
