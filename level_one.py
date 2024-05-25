@@ -39,7 +39,7 @@ try:
         robot.checkImage()
         checkForStopSigns(robot, robot.rosImg_to_cv2())
 
-        if(detect_obstacle(checkScan()) < 0.3):
+        if(detect_obstacle(robot,checkScan()) < 0.3):
             print("back")
             set_cmd_vel(0.5,0,1)
             print("wait")
