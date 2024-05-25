@@ -38,10 +38,10 @@ try:
         #rclpy,spin_once is a function that updates the ros topics once
         rclpy.spin_once(robot, timeout_sec=0.1)
 
-        image = np.asarray(robot.rosImg_to_cv2())
+        image = robot.rosImg_to_cv2()
         model = YOLO('yolov8n.pt')
         
-        if robot.ML_predict_stop_sign(model,np.asarray(image)):
+        if robot.ML_predict_stop_sign(model,image):
             print("stop sign")
             robot.set_cmd_vel(0,0,1)
         else:
