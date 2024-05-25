@@ -22,7 +22,8 @@ robot.checkImage()
 currentImg = robot.rosImg_to_cv2()
 currentImg = robot.red_filter(currentImg)
 currentImg = robot.add_contour(currentImg)
-#Need a dataset?? for the stopsign detection
-#isStopSign = robot.ML_predict_stop_sign(,currentImg)
-#if isStopSign:
-#    print("stopsign")
+model = YOLO('yolo8n.pt')
+isStopSign = robot.ML_predict_stop_sign(model,currentImg)
+
+if isStopSign:
+    print("stopsign")
