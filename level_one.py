@@ -12,7 +12,7 @@ from ultralytics import YOLO
 if not rclpy.ok():
     rclpy.init()
 
-TMMC_Wrapper.is_SIM = True
+TMMC_Wrapper.is_SIM = False
 if not TMMC_Wrapper.is_SIM:
     #Specify hardware api
     TMMC_Wrapper.use_hardware()
