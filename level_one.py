@@ -38,16 +38,18 @@ try:
         #rclpy,spin_once is a function that updates the ros topics once
         rclpy.spin_once(robot, timeout_sec=0.1)
 
-        image = np.asarray(robot.rosImg_to_cv2())
-        model = YOLO('yolov8n.pt')
+        #start stop sign code
+        # image = np.asarray(robot.rosImg_to_cv2())
+        # model = YOLO('yolov8n.pt')
         
-        if robot.ML_predict_stop_sign(model,np.asarray(image)):
-            print("stop sign")
-            robot.set_cmd_vel(0,0,1)
-        else:
-            print("no stop sign")
+        # if robot.ML_predict_stop_sign(model,np.asarray(image)):
+        #     print("stop sign")
+        #     robot.set_cmd_vel(0,0,1)
+        # else:
+        #     print("no stop sign")
+        #end stop sign code
   
-
+        #start anti-collision
         if((robot.detect_obstacle(robot.checkScan().ranges)[0]) < 0.09):
             print("back")
             robot.set_cmd_vel(-0.25,0,1)
@@ -55,7 +57,7 @@ try:
             robot.set_cmd_vel(0,0,5)
             print("turn")
             robot.set_cmd_vel(0,0.25*3.14159265359, 4)
-
+        #end of anti-collision
 
         #Add looping functionality here
         
