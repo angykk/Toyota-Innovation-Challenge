@@ -36,7 +36,7 @@ try:
         #rclpy,spin_once is a function that updates the ros topics once
         rclpy.spin_once(robot, timeout_sec=0.1)
 
-        checkForStopSigns(robot.rosImg_to_cv2())
+        checkForStopSigns(robot.checkImage().rosImg_to_cv2())
 
         if((robot.detect_obstacle(robot.checkScan().ranges)[0]) < 0.1):
             print("back")
