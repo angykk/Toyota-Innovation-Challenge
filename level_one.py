@@ -38,13 +38,13 @@ try:
         
         checkForStopSigns(rosImg_to_cv2())
 
-        if((robot.detect_obstacle(robot.checkScan().ranges)[0]) < 0.3):
+        if((robot.detect_obstacle(robot.checkScan().ranges)[0]) < 0.1):
             print("back")
-            robot.set_cmd_vel(0.5,0,1)
+            set_cmd_vel(0.25,0,1)
             print("wait")
             robot.set_cmd_vel(0,0,5)
             print("turn")
-            robot.set_cmd_vel(0,0.5*3.14, 2)
+            set_cmd_vel(0,0.25*3.14, 4)
 
 
         #Add looping functionality here
