@@ -41,8 +41,8 @@ try:
         print("starting SS search")
         
         #image = robot.rosImg_to_cv2()
-        image = cv2.imread("STOP_sign.jpeg")
-        model = YOLO('yolov8n.pt')
+        #image = cv2.imread("STOP_sign.jpeg")
+        #model = YOLO('yolov8n.pt')
         checkForStopSigns(robot,robot.rosImg_to_cv2())
         # if robot.ML_predict_stop_sign(model,np.asarray(image)):
         #     print("stop sign")

@@ -3,7 +3,7 @@ import rclpy
 from ultralytics import YOLO
 
 #Start Process
-def checkForStopSigns(image):
+def checkForStopSigns(robot,image):
     """Takes an NP image and returns whether or not a stopsign in is in view"""
     print("In SS Function")
     try:   
