@@ -3,6 +3,7 @@ import rclpy
 #Start Process
 def checkForStopSigns(self,image):
     """Takes, self and an NP image and returns whether or not a stopsign in is in view"""
+    print("In SS Function")
     try:   
         print("starting SS search")
         image = self.red_filter(image)
