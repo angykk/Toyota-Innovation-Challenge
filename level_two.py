@@ -26,4 +26,6 @@ model = YOLO('yolo8n.pt')
 isStopSign = robot.ML_predict_stop_sign(model,currentImg)
 
 if isStopSign:
-    print("stopsign")
+    print("stop sign")
+else:
+    print("no stop sign")
