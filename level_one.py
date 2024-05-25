@@ -38,7 +38,7 @@ try:
         #rclpy,spin_once is a function that updates the ros topics once
         rclpy.spin_once(robot, timeout_sec=0.1)
 
-        robot.checkImageRelease()
+        print(robot.checkImage())
 
         # image = robot.rosImg_to_cv2()
         # print(image)
