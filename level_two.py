@@ -17,15 +17,19 @@ if not "robot" in globals():
 print("running level_two: Stop Sign")
 
 #Start Process
-robot.checkScan()
-robot.checkImage()
-currentImg = robot.rosImg_to_cv2()
-currentImg = robot.red_filter(currentImg)
-currentImg = robot.add_contour(currentImg)
-model = YOLO('yolo8n.pt')
-isStopSign = robot.ML_predict_stop_sign(model,currentImg)
+try:
+    while True:
+        robot.checkScan()
+        robot.checkImage()
+        currentImg = robot.rosImg_to_cv2()
+        currentImg = robot.red_filter(currentImg)
+        currentImg = robot.add_contour(currentImg)
+        model = YOLO('yolo8n.pt')
+        isStopSign = robot.ML_predict_stop_sign(model,currentImg)
 
-if isStopSign:
-    print("stop sign")
-else:
-    print("no stop sign")
+        if isStopSign:
+            print("stop sign")
+        else:
+            print("no stop sign")
+except KeyboardInterrupt:
+    print("keyboard interrupt receieved.Stopping...")
