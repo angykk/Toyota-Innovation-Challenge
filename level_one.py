@@ -32,22 +32,22 @@ rclpy.spin_once(robot, timeout_sec=0.1)
 try:
     print("Entering the robot loop which cycles until the script is stopped")
     #while True:
-        print("A")
-        #rclpy,spin_once is a function that updates the ros topics once
-        rclpy.spin_once(robot, timeout_sec=0.1)
+    print("A")
+    #rclpy,spin_once is a function that updates the ros topics once
+    rclpy.spin_once(robot, timeout_sec=0.1)
 
-        robot.checkImage()
-        print(robot.checkImage())
-        print(rosImg_to_cv2())
-        checkForStopSigns(rosImg_to_cv2())
+    robot.checkImage()
+    print(robot.checkImage())
+    print(rosImg_to_cv2())
+    checkForStopSigns(rosImg_to_cv2())
 
-        if(detect_obstacle(robot,checkScan())[0] < 0.3):
-            print("back")
-            set_cmd_vel(0.5,0,1)
-            print("wait")
-            set_cmd_vel(0,0,5)
-            print("turn")
-            set_cmd_vel(0,0.5*3.14, 2)
+    if(detect_obstacle(robot,checkScan())[0] < 0.3):
+        print("back")
+        set_cmd_vel(0.5,0,1)
+        print("wait")
+        set_cmd_vel(0,0,5)
+        print("turn")
+        set_cmd_vel(0,0.5*3.14, 2)
 
 
         #Add looping functionality here
