@@ -37,7 +37,7 @@ try:
         rclpy.spin_once(robot, timeout_sec=0.1)
 
         robot.checkImage()
-        checkForStopSigns(robot, robot.rosImg_to_cv2())
+        checkForStopSigns(rosImg_to_cv2())
 
         if(detect_obstacle(robot,checkScan()) < 0.3):
             print("back")
