@@ -318,8 +318,11 @@ class Robot(Node):
         self.image_future.done()
     
     def checkImage(self):
+        print("Step 1")
         self.image_future = rclpy.Future()
+        print("Step 2")
         self.spin_until_future_completed(self.image_future)
+        print("Step 3")
         return self.last_image_msg
 
     def checkImageRelease(self): #this one returns an actual image instead of all the data

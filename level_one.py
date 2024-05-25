@@ -39,17 +39,19 @@ try:
         rclpy.spin_once(robot, timeout_sec=0.1)
 
         #start stop sign code
-        # image = np.asarray(robot.rosImg_to_cv2())
-        # model = YOLO('yolov8n.pt')
+        # print(robot.checkImage())
+
+        # image = robot.rosImg_to_cv2()
+        # print(image)
+        # # model = YOLO('yolov8n.pt')
         
-        # if robot.ML_predict_stop_sign(model,np.asarray(image)):
-        #     print("stop sign")
-        #     robot.set_cmd_vel(0,0,1)
-        # else:
-        #     print("no stop sign")
-        #end stop sign code
+        if robot.ML_predict_stop_sign(model,np.asarray(image)):
+            print("stop sign")
+            robot.set_cmd_vel(0,0,1)
+        else:
+            print("no stop sign")
   
-        #start anti-collision
+
         if((robot.detect_obstacle(robot.checkScan().ranges)[0]) < 0.09):
             print("back")
             robot.set_cmd_vel(-0.25,0,1)
