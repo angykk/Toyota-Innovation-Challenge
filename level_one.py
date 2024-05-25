@@ -18,6 +18,8 @@ if not TMMC_Wrapper.is_SIM:
 if not "robot" in globals():
     robot = TMMC_Wrapper.Robot()
 
+robot.init()
+
 #Debug messaging 
 print("running main")
 
