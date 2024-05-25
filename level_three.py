@@ -34,10 +34,11 @@ rclpy.spin_once(robot, timeout_sec=0.1)
 try:
     print("Entering the robot loop which cycles until the script is stopped")
     while True:
-
+        
+        
         if((robot.detect_obstacle(robot.checkScan().ranges)[0]) > 0.2):
             robot.set_cmd_vel(0.25,0,0.5)
-        while((robot.detect_obstacle(robot.checkScan().ranges)[0]) < 0.2)
+        while((robot.detect_obstacle(robot.checkScan().ranges)[0]) < 0.2):
             robot.set_cmd_vel(0,0.1,0.5)
 
         if((robot.detect_obstacle(robot.checkScan().ranges)[0]) < 0.09):
