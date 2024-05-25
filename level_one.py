@@ -4,7 +4,7 @@ import TMMC_Wrapper
 import rclpy
 import numpy as np
 import math
-from "./level_two.py" import checkForStopSign
+from "level_two.py" import checkForStopSign
 
 #Start ros with initializing the rclpy object
 if not rclpy.ok():
