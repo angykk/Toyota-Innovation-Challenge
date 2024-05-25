@@ -38,7 +38,7 @@ try:
         rclpy.spin_once(robot, timeout_sec=0.1)
 
         #start stop sign code
-        print(robot.checkImage())
+        #print(robot.checkImage())
 
         image = robot.rosImg_to_cv2()
         print(image)
@@ -54,12 +54,12 @@ try:
 
         if(dist < 0.09):
             #robot.set_cmd_vel(0.0,0.5,3)
-            print("back")
-            robot.set_cmd_vel(-0.25,0,1)
-            print("wait")
-            robot.set_cmd_vel(0,0,5)
-            print("turn")
-            robot.set_cmd_vel(0,0.25*3.14159265359, 4)
+            # print("back")
+            # robot.set_cmd_vel(-0.25,0,1)
+            # print("wait")
+            # robot.set_cmd_vel(0,0,5)
+            # print("turn")
+            # robot.set_cmd_vel(0,0.25*3.14159265359, 4)
         #end of anti-collision
 
         #Add looping functionality here
