@@ -39,17 +39,14 @@ try:
 
         print("starting SS search")
         image = robot.rosImg_to_cv2()
-        #image = robot.red_filter(image)
-        # image = robot.add_contour(image)
-        # model = YOLO('yolo8n.pt')
-        # isStopSign = robot.ML_predict_stop_sign(model,image)
+        model = YOLO('yolo8n.pt')
 
-        # if isStopSign:
-        #     print("stop sign")
-        #     robot.set_cmd_vel(0,0,1)
+        if robot.ML_predict_stop_sign(model,image):
+            print("stop sign")
+            robot.set_cmd_vel(0,0,1)
             
-        # else:
-        #     print("no stop sign")
+        else:
+            print("no stop sign")
   
 
         if((robot.detect_obstacle(robot.checkScan().ranges)[0]) < 0.1):
