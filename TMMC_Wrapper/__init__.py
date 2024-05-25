@@ -753,7 +753,7 @@ class Robot(Node):
         img_3D = np.reshape(img_data, (height, width, 3))
         return img_3D
     
-    def ML_predict_stop_sign(model, img):
+    def ML_predict_stop_sign(self, model, img):
         # height, width = image.shape[:2]
         # imgsz = (width, height)
 
