@@ -43,7 +43,7 @@ try:
         #image = robot.rosImg_to_cv2()
         image = cv2.imread("STOP_sign.jpeg")
         model = YOLO('yolov8n.pt')
-        checkForStopSigns(model, rosImg_to_cv2())
+        checkForStopSigns(model, robot.rosImg_to_cv2())
         # if robot.ML_predict_stop_sign(model,np.asarray(image)):
         #     print("stop sign")
         #     robot.set_cmd_vel(0,0,1)
