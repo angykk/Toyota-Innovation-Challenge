@@ -9,7 +9,7 @@ def checkForStopSigns(image):
     try:   
         print("starting SS search")
         model = YOLO('yolov8n.pt')
-        isStopSign = ML_predict_stop_sign(model,image)
+        isStopSign = robot.ML_predict_stop_sign(model,image)
 
         if isStopSign:
             print("stop sign")
