@@ -52,13 +52,13 @@ try:
         #     print("no stop sign")
   
 
-        if((robot.detect_obstacle(robot.checkScan().ranges)[0]) < 0.1):
+        if((robot.detect_obstacle(robot.checkScan().ranges)[0]) < 0.09):
             print("back")
             robot.set_cmd_vel(-0.25,0,1)
             print("wait")
             robot.set_cmd_vel(0,0,5)
             print("turn")
-            robot.set_cmd_vel(0,0.25*3.14, 4)
+            robot.set_cmd_vel(0,0.25*3.14159265359, 4)
 
 
         #Add looping functionality here
