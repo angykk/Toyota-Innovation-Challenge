@@ -36,7 +36,19 @@ try:
         #rclpy,spin_once is a function that updates the ros topics once
         rclpy.spin_once(robot, timeout_sec=0.1)
 
-        checkForStopSigns(robot.rosImg_to_cv2())
+        print("starting SS search")
+        image = robot.red_filter(robot.checkImage())
+        image = robot.add_contour(image)
+        model = YOLO('yolo8n.pt')
+        isStopSign = robot.ML_predict_stop_sign(model,image)
+
+        if isStopSign:
+            print("stop sign")
+            robot.set_cmd_vel(0,0,1)
+            
+        else:
+            print("no stop sign")
+            
 
         if((robot.detect_obstacle(robot.checkScan().ranges)[0]) < 0.1):
             print("back")
