@@ -37,7 +37,7 @@ try:
         rclpy.spin_once(robot, timeout_sec=0.1)
 
         print("starting SS search")
-        image = robot.red_filter(robot.checkImage())
+        image = robot.red_filter(robot.checkImage().data)
         image = robot.add_contour(image)
         model = YOLO('yolo8n.pt')
         isStopSign = robot.ML_predict_stop_sign(model,image)
