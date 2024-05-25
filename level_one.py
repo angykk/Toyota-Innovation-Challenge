@@ -39,6 +39,7 @@ try:
         rclpy.spin_once(robot, timeout_sec=0.1)
 
         robot.checkImageRelease()
+
         # image = robot.rosImg_to_cv2()
         # print(image)
         # model = YOLO('yolov8n.pt')
