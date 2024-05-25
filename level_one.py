@@ -4,6 +4,7 @@ import TMMC_Wrapper
 import rclpy
 import numpy as np
 import math
+import cv2
 from level_two import checkForStopSigns
 from ultralytics import YOLO
 
@@ -38,18 +39,15 @@ try:
         rclpy.spin_once(robot, timeout_sec=0.1)
 
         print("starting SS search")
-        # image = robot.rosImg_to_cv2()
-        # image = robot.red_filter(robot.checkImageRelease)
-        # image = robot.add_contour(image)
-        # model = YOLO('yolo8n.pt')
-        # isStopSign = robot.ML_predict_stop_sign(model,image)
+        #image = robot.rosImg_to_cv2()
+        image = cv2.imread("STOP_sign.jpeg",mode="RGB")
+        model = YOLO('yolo8n.pt')
 
-        # if isStopSign:
-        #     print("stop sign")
-        #     robot.set_cmd_vel(0,0,1)
-            
-        # else:
-        #     print("no stop sign")
+        if robot.ML_predict_stop_sign(model,image):
+            print("stop sign")
+            robot.set_cmd_vel(0,0,1)
+        else:
+            print("no stop sign")
   
 
         if((robot.detect_obstacle(robot.checkScan().ranges)[0]) < 0.09):
