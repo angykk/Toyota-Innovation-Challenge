@@ -40,6 +40,7 @@ try:
         checkForStopSign(robot,robot.rosImg_to_cv2())
 
         if(detect_obstacle(checkScan()) < 0.1):
+            set_cmd_vel(0.5,0,1)
             set_cmd_vel(0,0.5*3.14, 2)
 
 
