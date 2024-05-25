@@ -1,7 +1,7 @@
 import TMMC_Wrapper
 import rclpy
 #Start Process
-def checkForStopSign(self,image):
+def checkForStopSigns(self,image):
     """Takes, self and an NP image and returns whether or not a stopsign in is in view"""
     try:   
         print("starting SS search")
@@ -18,3 +18,5 @@ def checkForStopSign(self,image):
             return False
     except Exception as err:
         print (err)
+
+__all__ = ['checkForStopSigns']
