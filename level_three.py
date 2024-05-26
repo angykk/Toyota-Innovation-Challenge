@@ -60,6 +60,7 @@ try:
             print("\n")
             print("angle: ")
             print(ranges[1])
+            robot.set_cmd_vel(0,0,1.5)
             robot.set_cmd_vel(-0.10,0,2)
            
             robot.set_cmd_vel(0,0,1)
