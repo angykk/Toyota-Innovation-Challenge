@@ -12,7 +12,7 @@ from ultralytics import YOLO
 if not rclpy.ok():
     rclpy.init()
 
-TMMC_Wrapper.is_SIM = False
+TMMC_Wrapper.is_SIM = True
 if not TMMC_Wrapper.is_SIM:
     #Specify hardware api
     TMMC_Wrapper.use_hardware()
@@ -37,22 +37,22 @@ try:
         #rclpy,spin_once is a function that updates the ros topics once
         rclpy.spin_once(robot, timeout_sec=0.1)
 
-        #start stop sign code
-        image = robot.rosImg_to_cv2()
-        model = YOLO('yolov8n.pt')
-        stop_status = robot.ML_predict_stop_sign(model,image)
+        # #start stop sign code
+        # image = robot.rosImg_to_cv2()
+        # model = YOLO('yolov8n.pt')
+        # stop_status = robot.ML_predict_stop_sign(model,image)
         
-        if (stop_status[0]):
-            print("stop sign detected")
-            robot.set_cmd_vel(0,0,1)
-        else:
-            print("no stop sign")
-        #end stop sign code
+        # if (stop_status[0]):
+        #     print("stop sign detected")
+        #     robot.set_cmd_vel(0,0,1)
+        # else:
+        #     print("no stop sign")
+        # #end stop sign code
         
         #start of anti collision
         dist , _ = robot.detect_obstacle(robot.checkScan().ranges)
 
-        if(dist < 0.01):
+        if(dist > 0 and dist < 0.3):
             print("back")
             robot.set_cmd_vel(-0.10,0,1)
             print("wait")
