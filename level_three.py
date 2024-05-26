@@ -51,7 +51,7 @@ try:
         if(ranges[0] == -1):
             robot.set_cmd_vel(0.5,0,1)
 
-        print(robot.find_longest)
+        print(robot.find_longest_path(robot.checkScan().ranges))
         
 
         if(ranges[0] > 0.0 and ranges[0] < 0.3):
