@@ -24,7 +24,7 @@ if not "robot" in globals():
 print("running main")
 
 #start processes
-robot.start_keyboard_control()
+
 #add starter functions here
 
 #rclpy,spin_once is a function that updates the ros topics once
@@ -57,6 +57,6 @@ except KeyboardInterrupt:
 finally:
     #when exiting program, run the kill processes
     #add functionality to ending processes here
-    robot.stop_keyboard_control()
+
     robot.destroy_node()
     rclpy.shutdown()
