@@ -102,14 +102,14 @@ class Robot(Node):
             self.image_subscription =  self.create_subscription(Image,'/camera/image_raw',self.image_listener_callback,qos_profile_sensor_data)
         else:
 	        self.image_subscription = self.create_subscription(Image,'/oakd/rgb/preview/image_raw',self.image_listener_callback,qos_profile_sensor_data)
-            self.image_subscription  # prevent unused variable warning
+        self.image_subscription  # prevent unused variable warning
         
         self.camera_info_future = rclpy.Future()
         if is_SIM:
             self.camera_info_subscription = self.create_subscription(CameraInfo,'/camera/camera_info',self.camera_info_listener_callback,qos_profile_sensor_data)
         else:
             self.camera_info_subscription = self.create_subscription(CameraInfo,'/oakd/rgb/preview/camera_info',self.camera_info_listener_callback,qos_profile_sensor_data)
-            self.camera_info_subscription  # prevent unused variable warning
+        self.camera_info_subscription  # prevent unused variable warning
 
         
         self.battery_state_future = rclpy.Future()
