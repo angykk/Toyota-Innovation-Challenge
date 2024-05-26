@@ -572,7 +572,7 @@ class Robot(Node):
         max_dist = max(scan)
         max_dist_index = scan.index(max_dist)
         max_dist_angle = (max_dist_index-90)/2
-
+        #push again
         return max_dist,max_dist_angle
 
 
