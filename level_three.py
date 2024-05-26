@@ -34,6 +34,7 @@ rclpy.spin_once(robot, timeout_sec=0.1)
 try:
     print("Entering the robot loop which cycles until the script is stopped")
     while True:
+
         # #start stop sign code
         # image = robot.rosImg_to_cv2()
         # model = YOLO('yolov8n.pt')
@@ -44,7 +45,10 @@ try:
         #     robot.set_cmd_vel(0,0,1)
         # #end stop sign code
 
-        if(robot.detect_obstacle(robot.checkScan().ranges)[0] == -1):
+
+        ranges = robot.detect_obstacle(robot.checkScan().ranges)
+
+        if(ranges[0] == -1):
             robot.set_cmd_vel(0.5,0,1)
 
         if(ranges[0] > 0.0 and ranges[0] < 0.3):
