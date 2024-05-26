@@ -105,7 +105,7 @@ class Robot(Node):
             self.image_subscription  # prevent unused variable warning
         
         self.camera_info_future = rclpy.Future()
-       if is_SIM:
+        if is_SIM:
             self.camera_info_subscription = self.create_subscription(CameraInfo,'/camera/camera_info',self.camera_info_listener_callback,qos_profile_sensor_data)
         else:
             self.camera_info_subscription = self.create_subscription(CameraInfo,'/oakd/rgb/preview/camera_info',self.camera_info_listener_callback,qos_profile_sensor_data)
