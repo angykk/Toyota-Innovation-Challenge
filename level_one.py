@@ -50,13 +50,16 @@ try:
         dist , _ = robot.detect_obstacle(robot.checkScan().ranges)
 
         if(dist > 0 and dist < 0.3):
-
-     
-            robot.set_cmd_vel(-0.10,0,1)
+            print("dist: ")
+            print(robot.detect_obstacle(robot.checkScan().ranges)[0])
+            print("\n")
+            print("angle: ")
+            print(robot.detect_obstacle(robot.checkScan().ranges)[1])
+            robot.set_cmd_vel(-0.10,0,2)
            
             robot.set_cmd_vel(0,0,1)
-        
-            robot.set_cmd_vel(0,0.25*3.14159265359, 4)
+            print("turning", 3.14159265359 - 0.0174533*robot.detect_obstacle(robot.checkScan().ranges)[1])
+            robot.set_cmd_vel(0,3.14159265359 - 0.0174533*robot.detect_obstacle(robot.checkScan().ranges)[1], 1)
         #end of anti-collision
         
 except KeyboardInterrupt:
