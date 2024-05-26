@@ -44,19 +44,18 @@ try:
         # if (stop_status[0]):
         #     print("stop sign detected")
         #     robot.set_cmd_vel(0,0,1)
-        # else:
-        #     print("no stop sign")
-        # #end stop sign code
+        #end stop sign code
         
         #start of anti collision
         dist , _ = robot.detect_obstacle(robot.checkScan().ranges)
 
         if(dist > 0 and dist < 0.3):
-            print("back")
+
+     
             robot.set_cmd_vel(-0.10,0,1)
-            print("wait")
+           
             robot.set_cmd_vel(0,0,1)
-            print("turn")
+        
             robot.set_cmd_vel(0,0.25*3.14159265359, 4)
         #end of anti-collision
         
