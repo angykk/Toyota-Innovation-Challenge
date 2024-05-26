@@ -36,20 +36,20 @@ try:
         #rclpy,spin_once is a function that updates the ros topics once
         rclpy.spin_once(robot, timeout_sec=0.1)
 
-        # #start stop sign code
-        # image = robot.rosImg_to_cv2()
-        # model = YOLO('yolov8n.pt')
-        # stop_status = robot.ML_predict_stop_sign(model,image)
+        #start stop sign code
+        image = robot.rosImg_to_cv2()
+        model = YOLO('yolov8n.pt')
+        stop_status = robot.ML_predict_stop_sign(model,image)
         
-        # if (stop_status[0]):
-        #     print("stop sign detected")
-        #     robot.set_cmd_vel(0,0,1)
+        if (stop_status[0]):
+            print("stop sign detected")
+            robot.set_cmd_vel(0,0,1)
         #end stop sign code
         
         #start of anti collision
         dist , _ = robot.detect_obstacle(robot.checkScan().ranges)
 
-        if(dist > 0 and dist < 0.3):
+        if(dist > 0.0 and dist < 0.3):
             print("dist: ")
             print(robot.detect_obstacle(robot.checkScan().ranges)[0])
             print("\n")

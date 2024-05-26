@@ -34,20 +34,20 @@ rclpy.spin_once(robot, timeout_sec=0.1)
 try:
     print("Entering the robot loop which cycles until the script is stopped")
     while True:
-        if((robot.detect_obstacle(robot.checkScan().ranges)[0]) > 0.2):
-            robot.set_cmd_vel(0.25,0,0.5)
-        while((robot.detect_obstacle(robot.checkScan().ranges)[0]) < 0.02):
-            print(robot.detect_obstacle(robot.checkScan().ranges)[0])
-            print("turning")
-            robot.set_cmd_vel(0,0.1,0.5)
+        while(!((robot.detect_obstacle(robot.checkScan().ranges)[0]) < 0.3)):
+            robot.set_cmd_vel(1,0,1)
 
-        if((robot.detect_obstacle(robot.checkScan().ranges)[0]) < 0.09):
-            print("back")
-            robot.set_cmd_vel(-0.25,0,1)
-            print("wait")
-            robot.set_cmd_vel(0,0,5)
-            print("turn")
-            robot.set_cmd_vel(0,0.25*3.14159265359, 4)
+        if((robot.detect_obstacle(robot.checkScan().ranges)[0]) > 0.0 and (robot.detect_obstacle(robot.checkScan().ranges)[0]) < 0.3):
+            print("dist: ")
+            print(robot.detect_obstacle(robot.checkScan().ranges)[0])
+            print("\n")
+            print("angle: ")
+            print(robot.detect_obstacle(robot.checkScan().ranges)[1])
+            robot.set_cmd_vel(-0.10,0,2)
+           
+            robot.set_cmd_vel(0,0,1)
+            print("turning", 3.14159265359 - 0.0174533*robot.detect_obstacle(robot.checkScan().ranges)[1])
+            robot.set_cmd_vel(0,3.14159265359 - 0.0174533*robot.detect_obstacle(robot.checkScan().ranges)[1], 1)
 
 
         #Add looping functionality here
