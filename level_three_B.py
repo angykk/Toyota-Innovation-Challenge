@@ -50,14 +50,14 @@ try:
 
         #print(robot.find_longest_path(robot.checkScan().ranges))
 
-        if(ranges[0] > 0.0 and ranges[0] < 0.1):
+        if(ranges[0] > 0.0 and ranges[0] < 0.25):
             print("collison")
             robot.set_cmd_vel(-0.10,0,2)
             robot.set_cmd_vel(0,0,1)
             robot.set_cmd_vel(0,math.pi/2 - 0.0174533*ranges[1], 1)
         else:
             print("forward")
-            robot.set_cmd_vel(1,0.0,2)
+            robot.set_cmd_vel(0.5,0.0,2)
             
         
 

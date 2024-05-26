@@ -49,7 +49,7 @@ try:
         #start of anti collision
         dist , _ = robot.detect_obstacle(robot.checkScan().ranges)
 
-        if(dist > 0.0 and dist < 0.3):
+        if(dist > 0.0 and dist < 0.1):
             print("dist: ")
             print(robot.detect_obstacle(robot.checkScan().ranges)[0])
             print("\n")
