@@ -2,10 +2,7 @@
 #import other libraries as needed
 import TMMC_Wrapper
 import rclpy
-import numpy as np
 import math
-import cv2
-from level_two import checkForStopSigns
 from ultralytics import YOLO
 
 #Start ros with initializing the rclpy object
@@ -34,6 +31,7 @@ rclpy.spin_once(robot, timeout_sec=0.1)
 try:
     print("Entering the robot loop which cycles until the script is stopped")
     while True:
+        ranges = robot.detect_obstacle(robot.checkScan().ranges)
 
         # #start stop sign code
         image = robot.rosImg_to_cv2()
@@ -43,31 +41,18 @@ try:
         if (stop_status[0]):
             print("stop sign detected")
             robot.set_cmd_vel(0,0,5)
-        # #end stop sign code
+        # end stop sign code
 
-
-        ranges = robot.detect_obstacle(robot.checkScan().ranges)
-
-        if(ranges[0] == -1):
-            robot.set_cmd_vel(0.5,0,1)
-
-        print(robot.find_longest_path(robot.checkScan().ranges))
-        
-
-        if(ranges[0] > 0.0 and ranges[0] < 0.3):
-            print("dist: ")
-            print(ranges[0])
-            print("\n")
-            print("angle: ")
-            print(ranges[1])
-            robot.set_cmd_vel(-0.10,0,2)
+        #crash detection and movement controls
+        if(ranges[0] > 0.0 and ranges[0] < 0.1):
+            print("distance from collision: ", ranges[0])
+            print("angle from collision: ", ranges[1])
+            robot.set_cmd_vel(-0.15,0,1)
            
-            robot.set_cmd_vel(0,0,1)
-            print("turning", math.pi - 0.0174533*ranges[1])
-            robot.set_cmd_vel(0,math.pi - 0.0174533*ranges[1], 1)
-        
-        
-
+            print("turning 90 degrees: ", -1*(math.pi/2))
+            robot.set_cmd_vel(0,-1*(math.pi/2), 1)
+        else:
+            robot.set_cmd_vel(0.5,0,1)
 
         #Add looping functionality here
         
