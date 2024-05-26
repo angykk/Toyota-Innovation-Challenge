@@ -50,7 +50,7 @@ try:
             robot.set_cmd_vel(-0.15,0,1)
            
             print("turning 90 degrees: ", -1*(math.pi/2))
-            robot.set_cmd_vel(0,-1*(math.pi/2), 0.5)
+            robot.set_cmd_vel(0,-1*(math.pi/2), 1)
         else:
             robot.set_cmd_vel(1,0,1)
 
