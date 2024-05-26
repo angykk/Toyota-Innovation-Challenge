@@ -568,6 +568,23 @@ class Robot(Node):
             return min_dist, min_dist_angle
         return -1, -1
 
+    def find_longest_path(self,scan):
+        # calculate indeces (this reflects reading data from 45 to 135 degrees)
+        front_index = 180
+        #90 for right and 270 for left
+        front_right_index = front_index - 90
+        front_left_index = front_index + 90
+
+        #Find longest Dist
+        data = scan[front_right_index:front_left_index + 1]
+
+        max_dist = max(data)
+        max_dist_index = data.index(max_dist)
+        max_dist_angle = (max_dist_index-90)/2
+
+        return max_dist,max_dist_angle
+
+
     def test_lidar_orientation(self):
        #---this was used to find the front heading of the robot, should not be used in solutions
         ranges = self.last_scan_msg.ranges
