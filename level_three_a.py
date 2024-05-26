@@ -44,7 +44,7 @@ try:
         # end stop sign code
 
         #crash detection and movement controls
-        if(ranges[0] > 0.0 and ranges[0] < 0.3):
+        if(ranges[0] > 0.0 and ranges[0] < 0.1):
             print("distance from collision: ", ranges[0])
             print("angle from collision: ", ranges[1])
             robot.set_cmd_vel(-0.15,0,1)
