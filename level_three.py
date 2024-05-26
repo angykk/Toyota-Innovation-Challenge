@@ -42,7 +42,7 @@ try:
         
         if (stop_status[0]):
             print("stop sign detected")
-            robot.set_cmd_vel(0,0,1)
+            robot.set_cmd_vel(0,0,5)
         # #end stop sign code
 
 
