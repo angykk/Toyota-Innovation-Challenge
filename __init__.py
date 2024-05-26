@@ -576,7 +576,7 @@ class Robot(Node):
         front_left_index = front_index + 90
 
         #Find longest Dist
-        data = scan[front_right_index:front_left_index + 1]
+        data = scan[0:360]
 
         max_dist = max(data)
         max_dist_index = data.index(max_dist)
