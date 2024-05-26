@@ -796,7 +796,6 @@ class Robot(Node):
                 stop_sign_detected = True
         except:
             stop_sign_detected = False
-
+        cv2.namedWindow("Bounding Box")
         cv2.imshow("Bounding Box", img)
-
         return stop_sign_detected, x1, y1, x2, y2   
