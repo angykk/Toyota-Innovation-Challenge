@@ -85,7 +85,7 @@ class Robot(Node):
         qos_policy = copy(rclpy.qos.qos_profile_sensor_data)
         #qos_policy.liveliness = rclpy.qos.LivelinessPolicy.MANUAL_BY_TOPIC
         #qos_policy.liveliness_lease_duration = rclpy.time.Duration(seconds=10)
-
+        global is_SIM
         self.last_scan_msg = None
         self.last_imu_msg = None
 
@@ -95,28 +95,28 @@ class Robot(Node):
         
         self.imu_future = rclpy.Future()
         self.imu_subscription = self.create_subscription(Imu,'/imu',self.imu_listener_callback,qos_profile_sensor_data)
-        self.imu_subscription  # prevent unused variable warning
+        self.imu_subscription# prevent unused variable warning
         
         self.image_future = rclpy.Future()
         if is_SIM:
             self.image_subscription =  self.create_subscription(Image,'/camera/image_raw',self.image_listener_callback,qos_profile_sensor_data)
         else:
 	        self.image_subscription = self.create_subscription(Image,'/oakd/rgb/preview/image_raw',self.image_listener_callback,qos_profile_sensor_data)
-        self.image_subscription  # prevent unused variable warning
+        self.image_subscription# prevent unused variable warning
         
         self.camera_info_future = rclpy.Future()
         if is_SIM:
             self.camera_info_subscription = self.create_subscription(CameraInfo,'/camera/camera_info',self.camera_info_listener_callback,qos_profile_sensor_data)
         else:
             self.camera_info_subscription = self.create_subscription(CameraInfo,'/oakd/rgb/preview/camera_info',self.camera_info_listener_callback,qos_profile_sensor_data)
-        self.camera_info_subscription  # prevent unused variable warning
+        self.camera_info_subscription# prevent unused variable warning
 
         
         self.battery_state_future = rclpy.Future()
         self.battery_state_subscription = self.create_subscription(BatteryState,'/battery_state',self.battery_state_listener_callback,qos_profile_sensor_data)
         self.battery_state_subscription  # prevent unused variable warning
 
-        global is_SIM
+
         if (not(is_SIM)): 
             self.dock_client = ActionClient(self, Dock, '/dock')
             self.undock_client = ActionClient(self, Undock, '/undock')
