@@ -43,12 +43,13 @@ try:
         image = robot.rosImg_to_cv2()
         #print(image)
         model = YOLO('yolov8n.pt')
+        stop_status = robot.ML_predict_stop_sign(model,image)
         
-        # if robot.ML_predict_stop_sign(model,image):
-        #     print("stop sign detected")
-        #     robot.set_cmd_vel(0,0,1)
-        # else:
-        #     print("no stop sign")
+        if (stop_status[0]):
+            print("stop sign detected")
+            robot.set_cmd_vel(0,0,1)
+        else:
+            print("no stop sign")
 
         dist , _ = robot.detect_obstacle(robot.checkScan().ranges)
 
