@@ -5,7 +5,6 @@ import rclpy
 import numpy as np
 import math
 import cv2
-from level_two import checkForStopSigns
 from ultralytics import YOLO
 
 #Start ros with initializing the rclpy object
