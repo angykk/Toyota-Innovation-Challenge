@@ -51,6 +51,7 @@ try:
         if(ranges[0] == -1):
             robot.set_cmd_vel(0.5,0,1)
 
+        print(robot.find_longest)
         
 
         if(ranges[0] > 0.0 and ranges[0] < 0.3):
