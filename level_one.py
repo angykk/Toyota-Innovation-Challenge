@@ -44,8 +44,6 @@ try:
         if (stop_status[0]):
             print("stop sign detected")
             robot.set_cmd_vel(0,0,1)
-        else:
-            print("no stop sign")
         #end stop sign code
         
         #start of anti collision
