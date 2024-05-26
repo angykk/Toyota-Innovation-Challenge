@@ -33,8 +33,8 @@ rclpy.spin_once(robot, timeout_sec=0.1)
 #run control functions on loop
 try:
     print("Entering the robot loop which cycles until the script is stopped")
+    undock()
     while True:
-
         # #start stop sign code
         image = robot.rosImg_to_cv2()
         model = YOLO('yolov8n.pt')
